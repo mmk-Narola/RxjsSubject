@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --output-path dist --base-href /angular-ghpages/",
+    "build": "ng build --output-path dist --base-href /RxjsSubject/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "predeploy": "npm run build",
