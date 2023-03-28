@@ -1,6 +1,12 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
+import {
+  BehaviorSubject,
+  catchError,
+  shareReplay,
+  tap,
+  throwError,
+} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -10,18 +16,31 @@ export class SubServicesService {
 
   constructor(private http: HttpClient) {}
 
-  public _subjectUseCase$ = new BehaviorSubject<any>([]);
+  public _firstSubject$ = new BehaviorSubject<any>([]);
 
-  public newSubjectForTest$ = new BehaviorSubject<any>([]);
+  public _secondSubject$ = new BehaviorSubject<any>([]);
+
+  public _thirdSubject$ = new BehaviorSubject<any>('');
 
   eventEmmit = new EventEmitter<any>();
 
   subjectCall() {
     return this.http.get(this.apiUrl).pipe(
       tap((data) => {
-        this._subjectUseCase$.next(data);
+        this._firstSubject$.next(data);
+        this._secondSubject$.next(data);
+        this._thirdSubject$.next(data);
       })
     );
+  }
+
+  getTodosList() {
+    let url = 'https://jsonplaceholder.typicode.com/todos/';
+    return this.http.get(url).pipe(shareReplay());
+  }
+
+  getSubjectData() {
+    return this._thirdSubject$.asObservable();
   }
 
   private handleError(error: HttpErrorResponse) {

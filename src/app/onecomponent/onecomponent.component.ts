@@ -10,19 +10,8 @@ export class OnecomponentComponent implements OnInit {
   constructor(private subjectService: SubServicesService) {}
 
   ngOnInit(): void {
-    this.subjectService._subjectUseCase$.subscribe((res) => {
-      console.log('One Component Subject Services', res);
+    this.subjectService._firstSubject$.subscribe((res) => {
+      console.log('First Subject ', res);
     });
-
-    this.subjectService.newSubjectForTest$.next([
-      'Mahesh',
-      'Mohan',
-      'Kshirsagar',
-    ]);
-
-    //   this.subjectService.eventEmmit.subscribe((res) =>
-    //     console.log('Event res :>> ', res)
-    //   );
-    // }
   }
 }

@@ -7,9 +7,10 @@ import { OnecomponentComponent } from './onecomponent/onecomponent.component';
 import { SecondcomponentComponent } from './secondcomponent/secondcomponet.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ShareReplayComponent } from './share-replay/share-replay.component';
 
 @NgModule({
-  declarations: [AppComponent, OnecomponentComponent, SecondcomponentComponent],
+  declarations: [AppComponent, OnecomponentComponent, SecondcomponentComponent, ShareReplayComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

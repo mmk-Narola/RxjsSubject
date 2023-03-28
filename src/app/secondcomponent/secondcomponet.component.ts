@@ -10,12 +10,12 @@ export class SecondcomponentComponent implements OnInit {
   constructor(private subjectService: SubServicesService) {}
 
   ngOnInit(): void {
-    this.subjectService._subjectUseCase$.subscribe((res) => {
-      // console.log('Two Componet Subject Services', res);
+    this.subjectService._secondSubject$.subscribe((res) => {
+      console.log('Two Subject', res);
     });
 
-    this.subjectService.newSubjectForTest$.subscribe((res) => {
-      console.log('res :>> ', res);
+    this.subjectService.getSubjectData().subscribe((res) => {
+      console.log('Third Subject', res);
     });
   }
 }

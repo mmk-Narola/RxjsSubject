@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, VERSION } from '@angular/core';
 import { SubServicesService } from './sub-services.service';
 
 @Component({
@@ -7,13 +7,13 @@ import { SubServicesService } from './sub-services.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'SubjectPractice';
+  title = 'Rxjs Operator Practices';
 
   constructor(private SubjectService: SubServicesService) {}
 
   ngOnInit(): void {
     this.SubjectService.subjectCall().subscribe((res) => {
-      this.SubjectService._subjectUseCase$.next(res);
+      console.log('Api Call ', res);
     });
   }
 }
